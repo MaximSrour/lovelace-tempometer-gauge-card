@@ -54,7 +54,7 @@ class TempometerGaugeCard extends HTMLElement {
 
     style.textContent = `
       ha-card {
-        --base-unit: ${cardConfig.scale};
+        --base-unit: ${cardConfig.scale} * 1.1;
         height: calc(var(--base-unit)*3.5);
         position: relative;
       }
@@ -108,14 +108,14 @@ class TempometerGaugeCard extends HTMLElement {
         position: absolute;
         width: calc(var(--base-unit) * 4);
         height: calc(var(--base-unit) * 2.1);
-        top: calc(var(--base-unit) * 1.25);
+        top: calc(var(--base-unit) * 1.6);
         margin-left: auto;
         margin-right: auto;
         transition: all 1s ease-out;
         z-index: 5;
       }
       .gauge-data #percent{
-        font-size: calc(var(--base-unit) * 0.7);
+        font-size: calc(var(--base-unit) * 0.6);
       }
       .gauge-data #title{
         padding-top: calc(var(--base-unit) * 0.22);
