@@ -164,11 +164,15 @@ class TempometerGaugeCard extends HTMLElement {
             float: left;
             color: #797575;
             padding-left: 1em;
+            position: relative;
+            bottom: calc(var(--base-unit) * 0.5);
         }
       .gauge-footer .maxval{
             float: right;
             color: #797575;
-            padding-right: .5em;
+            padding-right: .65em;
+            position: relative;
+            bottom: calc(var(--base-unit) * 0.5);
         }
       .gauge-c hr {
             visibility: hidden;
