@@ -321,7 +321,7 @@ class TempometerGaugeCard extends HTMLElement {
     }
     sortable.sort((a, b) => { return a[1] - b[1] });
     
-    for(let i = 0; i < sortable.length -2; i++) {
+    for(let i = 0; i < sortable.length -1; i++) {
       if (numberValue >= sortable[i][1] && numberValue < sortable[i+1][1]) {
         return severityMap[sortable[i][0]];
       }
@@ -343,12 +343,6 @@ class TempometerGaugeCard extends HTMLElement {
   }
 
 	/*
-  
-  
-      red: "var(--label-badge-red)",
-      green: "var(--label-badge-green)",
-      yellow: "var(--label-badge-yellow)",
-      normal: "var(--label-badge-blue)",
   
   _computeSeverity(stateValue, sections) {
     let numberValue = Number(stateValue);
