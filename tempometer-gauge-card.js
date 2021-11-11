@@ -303,12 +303,12 @@ class TempometerGaugeCard extends HTMLElement {
   _computeSeverity(stateValue, sections) {
     let numberValue = Number(stateValue);
     const severityMap = {
-      blue: rgb(63, 72, 204),
-      cyan: rgb(0, 168, 243),
-      green: rgb(244, 180, 0),
-      yellow: rgb(13, 160, 53),
-      red: rgb(223, 76, 30),
-      normal: rgb(63, 72, 204),
+      blue: "#3f48cc",
+      cyan: "#00a8f3",
+      green: "#0da035",
+      yellow: "#f4b400",
+      red: "#df4c1e",
+      normal: "#3f48cc",
     };
     if (!sections) return severityMap["normal"];
     let sortable = [];
