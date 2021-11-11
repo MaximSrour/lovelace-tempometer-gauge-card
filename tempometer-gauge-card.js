@@ -308,7 +308,7 @@ class TempometerGaugeCard extends HTMLElement {
       green: "#0da035",
       yellow: "#f4b400",
       red: "#df4c1e",
-      normal: "#3f4800",
+      normal: "#000000",
     };
     
     //If no config set, return normal color
@@ -321,7 +321,7 @@ class TempometerGaugeCard extends HTMLElement {
     }
     sortable.sort((a, b) => { return a[1] - b[1] });
     
-    for(let i = 0; i < sortable.length -1; i++) {
+    for(let i = 0; i < sortable.length-2; i++) {
       if (numberValue >= sortable[i][1] && numberValue < sortable[i+1][1]) {
         return severityMap[sortable[i][0]];
       }
