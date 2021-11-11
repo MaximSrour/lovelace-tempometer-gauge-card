@@ -303,33 +303,40 @@ class TempometerGaugeCard extends HTMLElement {
   _computeSeverity(stateValue, sections) {
     let numberValue = Number(stateValue);
     const severityMap = {
-      red: "#df4c1e",
+      blue: "#3f48cc",
+      cyan: "#00a8f3",
       green: "#0da035",
       yellow: "#f4b400",
+      red: "#df4c1e",
       normal: "#3f48cc",
     };
+    
+    //If no config set, return normal color
     if (!sections) return severityMap["normal"];
+    
+    //Sort config input into value order
     let sortable = [];
     for (let severity in sections) {
       sortable.push([severity, sections[severity]]);
     }
     sortable.sort((a, b) => { return a[1] - b[1] });
-    if (numberValue >= sortable[0][1] && numberValue < sortable[1][1]) {
-      return severityMap[sortable[0][0]];
-    }
-    if (numberValue >= sortable[1][1] && numberValue < sortable[2][1]) {
-      return severityMap[sortable[1][0]];
-    }
-    if (sortable.length === 4) {
-      if (numberValue >= sortable[2][1] && numberValue < sortable[3][1]) {
-        return severityMap[sortable[2][0]];
+    
+    for(let i = 0; i < sortable.length -2; i++) {
+      if (numberValue >= sortable[i][1] && numberValue < sortable[i+1][1]) {
+        return severityMap[sortable[i][0]];
       }
-      if (numberValue > sortable[3][1]) {
+    }
+    
+    if (sortable.length === 6) {
+      if (numberValue >= sortable[4][1] && numberValue < sortable[5][1]) {
+        return severityMap[sortable[4][0]];
+      }
+      if (numberValue > sortable[5][1]) {
         return severityMap["normal"]
       }
     } else {
-      if (numberValue >= sortable[2][1]) {
-        return severityMap[sortable[2][0]];
+      if (numberValue >= sortable[4][1]) {
+        return severityMap[sortable[4][0]];
       }
     }
     return severityMap["normal"];
