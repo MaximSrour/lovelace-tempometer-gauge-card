@@ -112,12 +112,13 @@ class TempometerGaugeCard extends HTMLElement {
         margin-left: auto;
         margin-right: auto;
         transition: all 1s ease-out;
+        z-index: 5;
       }
       .gauge-data #percent{
-        font-size: calc(var(--base-unit) * 0.55);
+        font-size: calc(var(--base-unit) * 0.7);
       }
       .gauge-data #title{
-        padding-top: calc(var(--base-unit) * 0.15);
+        padding-top: calc(var(--base-unit) * 0.22);
         font-size: calc(var(--base-unit) * 0.30);
       }
       .gauge-icons{
