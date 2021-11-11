@@ -299,7 +299,43 @@ class TempometerGaugeCard extends HTMLElement {
   _translateTurn(value, config) {
     return 5 * (value - config.min) / (config.max - config.min);
   }
+  
+  _computeSeverity(stateValue, sections) {
+    let numberValue = Number(stateValue);
+    const severityMap = {
+      red: "var(--label-badge-red)",
+      green: "var(--label-badge-green)",
+      yellow: "var(--label-badge-yellow)",
+      normal: "var(--label-badge-blue)",
+    };
+    if (!sections) return severityMap["normal"];
+    let sortable = [];
+    for (let severity in sections) {
+      sortable.push([severity, sections[severity]]);
+    }
+    sortable.sort((a, b) => { return a[1] - b[1] });
+    if (numberValue >= sortable[0][1] && numberValue < sortable[1][1]) {
+      return severityMap[sortable[0][0]];
+    }
+    if (numberValue >= sortable[1][1] && numberValue < sortable[2][1]) {
+      return severityMap[sortable[1][0]];
+    }
+    if (sortable.length === 4) {
+      if (numberValue >= sortable[2][1] && numberValue < sortable[3][1]) {
+        return severityMap[sortable[2][0]];
+      }
+      if (numberValue > sortable[3][1]) {
+        return severityMap["normal"]
+      }
+    } else {
+      if (numberValue >= sortable[2][1]) {
+        return severityMap[sortable[2][0]];
+      }
+    }
+    return severityMap["normal"];
+  }
 
+	/*
   _computeSeverity(stateValue, sections) {
     let numberValue = Number(stateValue);
     const severityMap = {
@@ -336,6 +372,7 @@ class TempometerGaugeCard extends HTMLElement {
     }
     return severityMap["normal"];
   }
+  */
 
   _getEntityStateValue(entity, attribute) {
     if (!attribute) {
