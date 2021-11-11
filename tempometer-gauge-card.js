@@ -303,10 +303,12 @@ class TempometerGaugeCard extends HTMLElement {
   _computeSeverity(stateValue, sections) {
     let numberValue = Number(stateValue);
     const severityMap = {
-      red: "var(--label-badge-red)",
-      green: "var(--label-badge-green)",
-      yellow: "var(--label-badge-yellow)",
-      normal: "var(--label-badge-blue)",
+      blue: rgb(63, 72, 204),
+      cyan: rgb(0, 168, 243),
+      green: rgb(244, 180, 0),
+      yellow: rgb(13, 160, 53),
+      red: rgb(223, 76, 30),
+      normal: rgb(63, 72, 204),
     };
     if (!sections) return severityMap["normal"];
     let sortable = [];
@@ -314,11 +316,11 @@ class TempometerGaugeCard extends HTMLElement {
       sortable.push([severity, sections[severity]]);
     }
     sortable.sort((a, b) => { return a[1] - b[1] });
-    if (numberValue >= sortable[0][1] && numberValue < sortable[1][1]) {
-      return severityMap[sortable[0][0]];
-    }
-    if (numberValue >= sortable[1][1] && numberValue < sortable[2][1]) {
-      return severityMap[sortable[1][0]];
+	  
+    for(let i = 0; i < sortable.length -2; i++) {
+      if (numberValue >= sortable[i][1] && numberValue < sortable[i+1][1]) {
+        return severityMap[sortable[i][0]];
+      }
     }
     if (sortable.length === 4) {
       if (numberValue >= sortable[2][1] && numberValue < sortable[3][1]) {
