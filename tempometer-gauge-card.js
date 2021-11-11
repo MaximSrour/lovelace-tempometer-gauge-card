@@ -308,7 +308,7 @@ class TempometerGaugeCard extends HTMLElement {
       green: "#0da035",
       yellow: "#f4b400",
       red: "#df4c1e",
-      normal: "#000000",
+      normal: "#3f48cc",
     };
     
     //If no config set, return normal color
@@ -389,6 +389,16 @@ class TempometerGaugeCard extends HTMLElement {
 
     return entity.attributes[attribute];
   }
+  
+  /*
+  _getEntityName(entity, attribute) {
+    if (!attribute) {
+      return entity.name;
+    }
+
+    return entity.attributes[attribute];
+  }
+  */
 
   set hass(hass) {
     const root = this.shadowRoot;
@@ -432,7 +442,10 @@ class TempometerGaugeCard extends HTMLElement {
 
 	if (entityState !== this._entityState) {
       root.getElementById("percent").textContent = `${entityState} ${measurement}`;
-      root.getElementById("title").textContent = config.title;
+    
+      let titleText = this._getEntityStateValue(hass.states[config.entity], config.title);
+      root.getElementById("title").textContent = titleText;
+    
       const turn = this._translateTurn(entityState, config) / 10;
       root.getElementById("gauge").style.transform = `rotate(${turn}turn)`;
       root.getElementById("gauge").style.backgroundColor = this._computeSeverity(entityState, config.severity);
