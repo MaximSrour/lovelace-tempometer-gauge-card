@@ -81,10 +81,10 @@ class TempometerGaugeCard extends HTMLElement {
         z-index: 3;
         position: absolute;
         background-color: var(--card-background-color);
-        width: calc(var(--base-unit) * 3.6);
-        height: calc(var(--base-unit) * 2);
-        top: calc(var(--base-unit) * 0.2);
-        margin-left: calc(var(--base-unit) * 0.2);
+        width: calc(var(--base-unit) * 2.6);
+        height: calc(var(--base-unit) * 1.6);
+        top: calc(var(--base-unit) * 0.7);
+        margin-left: calc(var(--base-unit) * 0.7);
         margin-right: auto;
         border-radius: calc(var(--base-unit) * 3.6) calc(var(--base-unit) * 3.6) 0px 0px ;
       }
@@ -162,12 +162,12 @@ class TempometerGaugeCard extends HTMLElement {
       .gauge-footer .minval{
             float: left;
             color: #797575;
-            padding-left: .5em;
+            padding-left: 1em;
         }
       .gauge-footer .maxval{
             float: right;
             color: #797575;
-            padding-right: .25em;
+            padding-right: .5em;
         }
       .gauge-c hr {
             visibility: hidden;
