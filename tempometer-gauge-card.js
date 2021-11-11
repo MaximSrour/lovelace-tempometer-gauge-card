@@ -303,10 +303,10 @@ class TempometerGaugeCard extends HTMLElement {
   _computeSeverity(stateValue, sections) {
     let numberValue = Number(stateValue);
     const severityMap = {
-      red: "var(--label-badge-red)",
-      green: "var(--label-badge-green)",
-      yellow: "var(--label-badge-yellow)",
-      normal: "var(--label-badge-blue)",
+      red: "#df4c1e",
+      green: "#0da035",
+      yellow: "#f4b400",
+      normal: "#3f48cc",
     };
     if (!sections) return severityMap["normal"];
     let sortable = [];
@@ -336,6 +336,13 @@ class TempometerGaugeCard extends HTMLElement {
   }
 
 	/*
+  
+  
+      red: "var(--label-badge-red)",
+      green: "var(--label-badge-green)",
+      yellow: "var(--label-badge-yellow)",
+      normal: "var(--label-badge-blue)",
+  
   _computeSeverity(stateValue, sections) {
     let numberValue = Number(stateValue);
     const severityMap = {
