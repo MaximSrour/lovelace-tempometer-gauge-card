@@ -403,7 +403,7 @@ class TempometerGaugeCard extends HTMLElement {
 	if (entityState !== this._entityState) {
       root.getElementById("percent").textContent = `${entityState} ${measurement}`;
     
-      let titleText = this._getEntityName(hass.states[config.entity], config.title);
+      let titleText = this._getEntityName(config.entity, config.title);
       root.getElementById("title").textContent = titleText;
     
       const turn = this._translateTurn(entityState, config) / 10;
