@@ -317,6 +317,8 @@ class TempometerGaugeCard extends HTMLElement {
     }
     sortable.sort((a, b) => { return a[1] - b[1] });
 	  
+    return severityMap["red"];
+	  
     for(let i = 0; i < sortable.length -2; i++) {
       if (numberValue >= sortable[i][1] && numberValue < sortable[i+1][1]) {
         return severityMap[sortable[i][0]];
