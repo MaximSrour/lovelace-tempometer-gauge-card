@@ -308,7 +308,7 @@ class TempometerGaugeCard extends HTMLElement {
       green: "#0da035",
       yellow: "#f4b400",
       red: "#df4c1e",
-      normal: "#3f48cc",
+      normal: "#3f4800",
     };
     
     //If no config set, return normal color
