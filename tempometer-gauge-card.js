@@ -406,6 +406,13 @@ class TempometerGaugeCard extends HTMLElement {
       let titleText = this._getEntityName(config.entity, config.title);
       root.getElementById("title").textContent = titleText;
     
+      console.log(config.entity);
+      console.log(config.entity.name);
+      console.log(config.entity.title);
+      console.log(hass.states[config.entity]);
+      console.log(hass.states[config.entity].name);
+      console.log(hass.states[config.entity].title);
+    
       const turn = this._translateTurn(entityState, config) / 10;
       root.getElementById("gauge").style.transform = `rotate(${turn}turn)`;
       root.getElementById("gauge").style.backgroundColor = this._computeSeverity(entityState, config.severity);
