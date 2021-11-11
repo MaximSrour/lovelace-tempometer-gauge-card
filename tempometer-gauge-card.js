@@ -390,7 +390,6 @@ class TempometerGaugeCard extends HTMLElement {
     return entity.attributes[attribute];
   }
   
-  /*
   _getEntityName(entity, attribute) {
     if (!attribute) {
       return entity.name;
@@ -398,7 +397,6 @@ class TempometerGaugeCard extends HTMLElement {
 
     return entity.attributes[attribute];
   }
-  */
 
   set hass(hass) {
     const root = this.shadowRoot;
@@ -443,7 +441,7 @@ class TempometerGaugeCard extends HTMLElement {
 	if (entityState !== this._entityState) {
       root.getElementById("percent").textContent = `${entityState} ${measurement}`;
     
-      let titleText = this._getEntityStateValue(hass.states[config.entity], config.title);
+      let titleText = this._getEntityName(hass.states[config.entity], config.title);
       root.getElementById("title").textContent = titleText;
     
       const turn = this._translateTurn(entityState, config) / 10;
