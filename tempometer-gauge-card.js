@@ -352,7 +352,7 @@ class TempometerGaugeCard extends HTMLElement {
   
   _getEntityName(entity, attribute) {
     if (!attribute) {
-      return entity.title;
+      return entity.name;
     }
 
     return entity.attributes[attribute];
