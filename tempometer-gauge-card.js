@@ -322,7 +322,7 @@ class TempometerGaugeCard extends HTMLElement {
     }
     sortable.sort((a, b) => { return a[1] - b[1] });
     
-    for(let i = 0; i < sortable.length-2; i++) {
+    for(let i = 0; i < sortable.length-1; i++) {
       if (numberValue >= sortable[i][1] && numberValue < sortable[i+1][1]) {
         return severityMap[sortable[i][0]];
       }
@@ -355,21 +355,9 @@ class TempometerGaugeCard extends HTMLElement {
     if (!attribute) {
       return entity.attributes.friendly_name;
     }
-    
-    return entity.attributes.friendly_name;
 
     return entity.attributes[attribute];
   }
-  
-  /*
-  export const entityName = (stateObj, config) => {
-    if (config.name === false) return null;
-    return (
-        config.name ||
-        (config.entity ? stateObj.attributes.friendly_name || computeEntity(stateObj.entity_id) : null) ||
-        null
-    );
-}; */
 
   set hass(hass) {
     const root = this.shadowRoot;
@@ -415,6 +403,7 @@ class TempometerGaugeCard extends HTMLElement {
       root.getElementById("percent").textContent = `${entityState} ${measurement}`;
     
       let titleText = this._getEntityName(hass.states[config.entity], config.title);
+      root.getElementById("title").textContent = titleText;
       root.getElementById("title").textContent = titleText;
     
       const turn = this._translateTurn(entityState, config) / 10;
