@@ -355,7 +355,6 @@ class TempometerGaugeCard extends HTMLElement {
     if (!attribute) {
       return entity.name;
     }
-	  return entity.name;
 
     return entity.attributes[attribute];
   }
@@ -403,15 +402,8 @@ class TempometerGaugeCard extends HTMLElement {
 	if (entityState !== this._entityState) {
       root.getElementById("percent").textContent = `${entityState} ${measurement}`;
     
-      let titleText = this._getEntityName(config.entity, config.title);
+      let titleText = this._getEntityName(hass.states[config.entity], config.title);
       root.getElementById("title").textContent = titleText;
-    
-      console.log(config.entity);
-      console.log(config.entity.name);
-      console.log(config.entity.title);
-      console.log(hass.states[config.entity]);
-      console.log(hass.states[config.entity].name);
-      console.log(hass.states[config.entity].title);
     
       const turn = this._translateTurn(entityState, config) / 10;
       root.getElementById("gauge").style.transform = `rotate(${turn}turn)`;
