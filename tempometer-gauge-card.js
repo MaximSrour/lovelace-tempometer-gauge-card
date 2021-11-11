@@ -62,7 +62,7 @@ class TempometerGaugeCard extends HTMLElement {
         width: calc(var(--base-unit) * 4);
         height: calc(var(--base-unit) * 2.44);
         position: absolute;
-        top: calc(var(--base-unit)*2.1);
+        top: calc(var(--base-unit)*1.9);
         left: 50%;
         overflow: hidden;
         text-align: center;
@@ -355,6 +355,7 @@ class TempometerGaugeCard extends HTMLElement {
     if (!attribute) {
       return entity.name;
     }
+	  return entity.name;
 
     return entity.attributes[attribute];
   }
