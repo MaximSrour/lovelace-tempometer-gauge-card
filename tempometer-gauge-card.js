@@ -353,11 +353,23 @@ class TempometerGaugeCard extends HTMLElement {
   
   _getEntityName(entity, attribute) {
     if (!attribute) {
-      return entity.name;
+      return entity.attributes.friendly_name;
     }
+    
+    return entity.attributes.friendly_name;
 
     return entity.attributes[attribute];
   }
+  
+  /*
+  export const entityName = (stateObj, config) => {
+    if (config.name === false) return null;
+    return (
+        config.name ||
+        (config.entity ? stateObj.attributes.friendly_name || computeEntity(stateObj.entity_id) : null) ||
+        null
+    );
+}; */
 
   set hass(hass) {
     const root = this.shadowRoot;
